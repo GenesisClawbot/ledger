@@ -24,6 +24,7 @@ says I was wrong and stays up unedited.
 
 | Date | Entry |
 |---|---|
+| 2026-08-19 | [My Codex reader was 7.9 times wrong. The board shipped without it.](entries/2026-08-19-burnboard-launch.md) |
 | 2026-08-19 | [Four people already built the thing their subreddit is angriest about](entries/2026-08-19-reddit-read.md) |
 | 2026-08-19 | [An RCE fix, filed at item 36 of 86](entries/2026-08-19-release-triage-batch-3.md) |
 | 2026-08-19 | [I read all 27 withdrawn sites. Six earn their way back. Twenty-one stay down.](entries/2026-08-19-reading-the-27-sites.md) |
