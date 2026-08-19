@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLAUDE.md Template Generator — Free</title>
+  <meta name="description" content="Generate a CLAUDE.md file for Claude Code in seconds. Pick your stack and get a ready-to-use template." />
+  <meta name="keywords" content="CLAUDE.md template, CLAUDE.md example, how to write CLAUDE.md for Claude Code, Claude Code setup" />
+  <meta property="og:title" content="CLAUDE.md Template Generator — Free" />
+  <meta property="og:description" content="Generate a CLAUDE.md file for Claude Code in seconds. Pick your stack and get a ready-to-use template." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://genesisclawbot.github.io/claudemd-generator/" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --border: #2e3250;
+      --accent: #7c6ff7;
+      --accent-light: #a89cf8;
+      --text: #e2e4f0;
+      --text-muted: #8b8fa8;
+      --green: #4ade80;
+      --orange: #fb923c;
+      --font-mono: 'Fira Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 32px 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 0;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      gap: 24px;
+    }
+
+    /* Form panel */
+    .form-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      height: fit-content;
+      position: sticky;
+      top: 24px;
+    }
+
+    .form-panel h2 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    label.field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .radio-group label, .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      transition: all 0.15s;
+      font-size: 14px;
+      color: var(--text);
+      user-select: none;
+    }
+
+    .radio-group label:hover, .checkbox-group label:hover {
+      border-color: var(--accent);
+      background: rgba(124, 111, 247, 0.08);
+    }
+
+    .radio-group input[type="radio"],
+    .checkbox-group input[type="checkbox"] {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .radio-group label:has(input:checked),
+    .checkbox-group label:has(input:checked) {
+      border-color: var(--accent);
+      background: rgba(124, 111, 247, 0.12);
+      color: #fff;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    /* Output panel */
+    .output-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .output-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .output-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .output-title .filename {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent-light);
+    }
+
+    .copy-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--green);
+    }
+
+    .copy-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .output-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .output-box-header {
+      background: var(--surface2);
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+
+    #output {
+      display: block;
+      width: 100%;
+      min-height: 560px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text);
+      padding: 20px 22px;
+      tab-size: 2;
+    }
+
+    /* line highlighting colors in pre */
+    .section-header { color: var(--accent-light); }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .stat span {
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 20px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 16px;
+      }
+      .form-panel { position: static; }
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Free tool</div>
+  <h1>CLAUDE.md Template Generator</h1>
+  <p class="subtitle">Pick your stack and get a ready-to-use CLAUDE.md for Claude Code. Takes about 10 seconds.</p>
+</header>
+
+<main>
+  <!-- Left: Form -->
+  <div class="form-panel">
+    <h2>Your Setup</h2>
+
+    <div class="field-group">
+      <label class="field-label">Project type</label>
+      <div class="radio-group" id="projectType">
+        <label><input type="radio" name="projectType" value="solo" checked /> Solo dev</label>
+        <label><input type="radio" name="projectType" value="small" /> Small team (2-5)</label>
+        <label><input type="radio" name="projectType" value="large" /> Large team / org</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Language / Stack</label>
+      <div class="radio-group" id="stack">
+        <label><input type="radio" name="stack" value="python" checked /> Python</label>
+        <label><input type="radio" name="stack" value="node" /> Node.js / TypeScript</label>
+        <label><input type="radio" name="stack" value="other" /> Other / Polyglot</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Tools in use</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="useGit" checked /> Git</label>
+        <label><input type="checkbox" id="useDocker" /> Docker</label>
+        <label><input type="checkbox" id="useTests" checked /> Tests</label>
+        <label><input type="checkbox" id="useCI" /> CI/CD pipeline</label>
+        <label><input type="checkbox" id="useVenv" /> Virtual env / venv</label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field-group">
+      <label class="field-label">AI Model</label>
+      <div class="radio-group" id="aiModel">
+        <label><input type="radio" name="aiModel" value="claude" checked /> Claude (default)</label>
+        <label><input type="radio" name="aiModel" value="gpt4" /> GPT-4</label>
+        <label><input type="radio" name="aiModel" value="generic" /> Model-agnostic</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Output -->
+  <div class="output-panel">
+    <div class="output-toolbar">
+      <div class="output-title">
+        Output: <span class="filename">CLAUDE.md</span>
+      </div>
+      <button class="copy-btn" onclick="copyOutput()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copy to clipboard
+      </button>
+    </div>
+
+    <div class="output-box">
+      <div class="output-box-header">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <textarea id="output" spellcheck="false" autocomplete="off"></textarea>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat">Lines: <span id="statLines">0</span></div>
+      <div class="stat">Characters: <span id="statChars">0</span></div>
+      <div class="stat">Sections: <span id="statSections">0</span></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+</footer>
+
+<script>
+  // Gather all form inputs
+  function getOptions() {
+    return {
+      projectType: document.querySelector('input[name="projectType"]:checked')?.value || 'solo',
+      stack: document.querySelector('input[name="stack"]:checked')?.value || 'python',
+      aiModel: document.querySelector('input[name="aiModel"]:checked')?.value || 'claude',
+      useGit: document.getElementById('useGit').checked,
+      useDocker: document.getElementById('useDocker').checked,
+      useTests: document.getElementById('useTests').checked,
+      useCI: document.getElementById('useCI').checked,
+      useVenv: document.getElementById('useVenv').checked,
+    };
+  }
+
+  function generateTemplate(opts) {
+    const lines = [];
+
+    // Header
+    const modelName = opts.aiModel === 'claude' ? 'Claude Code' : opts.aiModel === 'gpt4' ? 'GPT-4 (Codex)' : 'AI agent';
+    lines.push(`# CLAUDE.md`);
+    lines.push(``);
+    lines.push(`This file tells ${modelName} how to work in this repo. Keep it updated as the project evolves.`);
+    lines.push(``);
+
+    // Project description
+    lines.push(`## Project`);
+    lines.push(``);
+    lines.push(`<!-- Replace this with a 2-3 sentence description of what this project does. -->`);
+    lines.push(`<!-- Example: "This is a FastAPI service that processes webhooks from Stripe and writes events to Postgres." -->`);
+    lines.push(``);
+    lines.push(`**Status:** Active development`);
+    if (opts.projectType === 'solo') {
+      lines.push(`**Team:** Solo project`);
+    } else if (opts.projectType === 'small') {
+      lines.push(`**Team:** Small team - coordinate before large refactors`);
+    } else {
+      lines.push(`**Team:** Multi-person team - branch-based workflow, PRs required`);
+    }
+    lines.push(``);
+
+    // Commands
+    lines.push(`## Commands`);
+    lines.push(``);
+
+    if (opts.stack === 'python') {
+      if (opts.useVenv) {
+        lines.push(`### Setup`);
+        lines.push(`\`\`\``);
+        lines.push(`python -m venv .venv`);
+        lines.push(`source .venv/bin/activate  # Windows: .venv\\Scripts\\activate`);
+        lines.push(`pip install -r requirements.txt`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+      if (opts.useDocker) {
+        lines.push(`### Docker`);
+        lines.push(`\`\`\``);
+        lines.push(`docker build -t app .`);
+        lines.push(`docker run -p 8000:8000 app`);
+        lines.push(`docker compose up          # if docker-compose.yml exists`);
+        lines.push(`docker compose up --build  # rebuild after Dockerfile changes`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+      lines.push(`### Run`);
+      lines.push(`\`\`\``);
+      if (!opts.useDocker) {
+        lines.push(`python main.py`);
+        lines.push(`# or:`);
+        lines.push(`python -m uvicorn app.main:app --reload   # if FastAPI`);
+        lines.push(`python -m flask run                        # if Flask`);
+      } else {
+        lines.push(`docker compose up`);
+      }
+      lines.push(`\`\`\``);
+      lines.push(``);
+      if (opts.useTests) {
+        lines.push(`### Tests`);
+        lines.push(`\`\`\``);
+        lines.push(`pytest`);
+        lines.push(`pytest tests/unit/         # unit tests only`);
+        lines.push(`pytest -x                  # stop on first failure`);
+        lines.push(`pytest --tb=short          # shorter tracebacks`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+    } else if (opts.stack === 'node') {
+      lines.push(`### Setup`);
+      lines.push(`\`\`\``);
+      lines.push(`npm install`);
+      lines.push(`\`\`\``);
+      lines.push(``);
+      if (opts.useDocker) {
+        lines.push(`### Docker`);
+        lines.push(`\`\`\``);
+        lines.push(`docker build -t app .`);
+        lines.push(`docker run -p 3000:3000 app`);
+        lines.push(`docker compose up`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+      lines.push(`### Run`);
+      lines.push(`\`\`\``);
+      lines.push(`npm run dev        # development (hot reload)`);
+      lines.push(`npm start          # production`);
+      lines.push(`npm run build      # compile TypeScript / bundle`);
+      lines.push(`\`\`\``);
+      lines.push(``);
+      if (opts.useTests) {
+        lines.push(`### Tests`);
+        lines.push(`\`\`\``);
+        lines.push(`npm test`);
+        lines.push(`npm run test:watch    # watch mode`);
+        lines.push(`npm run test:ci       # CI mode (no watch, exit code)`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+    } else {
+      // Other / polyglot
+      if (opts.useDocker) {
+        lines.push(`### Docker`);
+        lines.push(`\`\`\``);
+        lines.push(`docker compose up --build`);
+        lines.push(`docker compose down`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+      lines.push(`### Run`);
+      lines.push(`\`\`\``);
+      lines.push(`make run        # or whatever your run command is`);
+      lines.push(`\`\`\``);
+      lines.push(``);
+      if (opts.useTests) {
+        lines.push(`### Tests`);
+        lines.push(`\`\`\``);
+        lines.push(`make test`);
+        lines.push(`\`\`\``);
+        lines.push(``);
+      }
+    }
+
+    if (opts.useCI) {
+      lines.push(`### CI / Deployment`);
+      lines.push(`\`\`\``);
+      lines.push(`# CI runs automatically on push to main`);
+      lines.push(`# Check .github/workflows/ for pipeline config`);
+      lines.push(`# Deploys to staging on PR merge, production on tagged release`);
+      lines.push(`\`\`\``);
+      lines.push(``);
+    }
+
+    // Code style
+    lines.push(`## Code Style`);
+    lines.push(``);
+
+    if (opts.stack === 'python') {
+      lines.push(`- Formatter: **black** (line length 88, default config)`);
+      lines.push(`- Linter: **ruff** or **flake8** - check pyproject.toml`);
+      lines.push(`- Type hints: required on all public functions`);
+      lines.push(`- Docstrings: Google style for public classes/methods`);
+      lines.push(`- Imports: stdlib first, then third-party, then local (isort handles this)`);
+    } else if (opts.stack === 'node') {
+      lines.push(`- Formatter: **Prettier** (check .prettierrc for config)`);
+      lines.push(`- Linter: **ESLint** (check .eslintrc)`);
+      lines.push(`- TypeScript strict mode: enabled - no \`any\` unless unavoidable`);
+      lines.push(`- Imports: named imports preferred over default where possible`);
+      lines.push(`- Async: async/await, not raw Promises`);
+    } else {
+      lines.push(`- Follow existing formatting in the file you're editing`);
+      lines.push(`- Match the patterns already in the codebase before inventing new ones`);
+      lines.push(`- If there's a linter config file, respect it`);
+    }
+    lines.push(``);
+
+    if (opts.projectType !== 'solo') {
+      lines.push(`### PR / Review conventions`);
+      lines.push(``);
+      if (opts.projectType === 'small') {
+        lines.push(`- Commit messages: conventional commits preferred (\`feat:\`, \`fix:\`, \`chore:\`, etc.)`);
+        lines.push(`- PRs: small and focused. Don't bundle unrelated changes.`);
+        lines.push(`- At least one review before merge to main`);
+      } else {
+        lines.push(`- Branch naming: \`feat/\`, \`fix/\`, \`chore/\` prefixes`);
+        lines.push(`- Conventional commits required - checked by CI`);
+        lines.push(`- Two reviews minimum before merge`);
+        lines.push(`- No direct pushes to main or staging`);
+      }
+      lines.push(``);
+    }
+
+    // Agent behavior
+    lines.push(`## Agent Rules`);
+    lines.push(``);
+    lines.push(`These apply to ${modelName} (and any AI working in this repo).`);
+    lines.push(``);
+    lines.push(`### Before changing things`);
+    lines.push(``);
+    lines.push(`- Read the file before editing it. Understand what's there.`);
+    lines.push(`- If you're unsure what a function does, trace it before touching it.`);
+    lines.push(`- Don't change interfaces or public APIs without flagging it first.`);
+    lines.push(``);
+    lines.push(`### Never do this without asking`);
+    lines.push(``);
+    lines.push(`- Delete files`);
+    lines.push(`- Rename files or directories`);
+    lines.push(`- Restructure the project layout`);
+    if (opts.useDocker) {
+      lines.push(`- Modify Dockerfile or docker-compose.yml`);
+    }
+    if (opts.projectType !== 'solo') {
+      lines.push(`- Merge or rebase branches`);
+      lines.push(`- Change anything in CI config`);
+    }
+    lines.push(`- Change environment variables or secrets handling`);
+    lines.push(``);
+    lines.push(`### Scope discipline`);
+    lines.push(``);
+    lines.push(`- Fix what was asked. Don't refactor unrelated code while you're in there.`);
+    lines.push(`- If you notice something broken nearby, mention it - don't fix it silently.`);
+    lines.push(`- One task at a time. If you need to do X before Y, say so.`);
+    lines.push(``);
+
+    if (opts.useTests) {
+      lines.push(`### Testing`);
+      lines.push(``);
+      lines.push(`- Run the tests after any non-trivial change.`);
+      lines.push(`- Don't mark a task done if tests are failing.`);
+      lines.push(`- New behaviour should have a test. Especially edge cases.`);
+      lines.push(`- Don't delete tests unless they're genuinely wrong.`);
+      lines.push(``);
+    }
+
+    if (opts.useGit) {
+      lines.push(`### Git`);
+      lines.push(``);
+      lines.push(`- Don't commit without being asked.`);
+      lines.push(`- Never force push.`);
+      if (opts.projectType === 'large') {
+        lines.push(`- Never push directly to main.`);
+      }
+      lines.push(``);
+    }
+
+    // Context / Memory
+    lines.push(`## Context Notes`);
+    lines.push(``);
+    lines.push(`Things that aren't obvious from the code:`);
+    lines.push(``);
+    lines.push(`<!-- Add project-specific gotchas here. Examples: -->`);
+    lines.push(`<!-- - "The config loader reads from .env, then environment, then falls back to defaults.env" -->`);
+    lines.push(`<!-- - "The staging DB is read-only for app users - writes go through the API" -->`);
+    lines.push(`<!-- - "Module X is intentionally not typed - it's generated at runtime" -->`);
+    lines.push(``);
+
+    if (opts.aiModel === 'claude') {
+      lines.push(`## Claude-Specific`);
+      lines.push(``);
+      lines.push(`- If a task is ambiguous, ask before starting. One clarifying question is better than 200 lines of wrong code.`);
+      lines.push(`- Use \`<SEARCH>\` tags when searching files - it's faster than reading everything.`);
+      lines.push(`- When running shell commands, use the bash tool, don't just describe what you'd run.`);
+      lines.push(`- If you hit an error you can't fix in 2 attempts, stop and report it.`);
+      lines.push(``);
+    } else if (opts.aiModel === 'gpt4') {
+      lines.push(`## GPT-4-Specific`);
+      lines.push(``);
+      lines.push(`- Be explicit about what files you're looking at before editing.`);
+      lines.push(`- If context gets long, summarize what you've done so far before continuing.`);
+      lines.push(`- Ask before making assumptions about project structure.`);
+      lines.push(``);
+    } else {
+      lines.push(`## Working with AI`);
+      lines.push(``);
+      lines.push(`- If a task is ambiguous, ask one clarifying question before starting.`);
+      lines.push(`- Report what you changed and why when done - not just what.`);
+      lines.push(`- Flag uncertainty explicitly rather than guessing silently.`);
+      lines.push(``);
+    }
+
+    lines.push(`---`);
+    lines.push(``);
+    lines.push(`*Generated by [CLAUDE.md Template Generator](https://genesisclawbot.github.io/claudemd-generator/) — update this file as your project evolves.*`);
+
+    return lines.join('\n');
+  }
+
+  function updateOutput() {
+    const opts = getOptions();
+    const text = generateTemplate(opts);
+    const textarea = document.getElementById('output');
+    textarea.value = text;
+
+    // Stats
+    const lineCount = text.split('\n').length;
+    const charCount = text.length;
+    const sectionCount = (text.match(/^##\s/mg) || []).length;
+    document.getElementById('statLines').textContent = lineCount;
+    document.getElementById('statChars').textContent = charCount.toLocaleString();
+    document.getElementById('statSections').textContent = sectionCount;
+  }
+
+  function copyOutput() {
+    const btn = document.querySelector('.copy-btn');
+    const text = document.getElementById('output').value;
+
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 11 4 6"></polyline><path d="M4 6v14h16V6"></path></svg> Copied!`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy to clipboard`;
+      }, 2000);
+    }).catch(() => {
+      // Fallback for older browsers
+      const textarea = document.getElementById('output');
+      textarea.select();
+      document.execCommand('copy');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+    });
+  }
+
+  // Wire up all inputs
+  document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('change', updateOutput);
+  });
+
+  // Initial render
+  updateOutput();
+</script>
+<script data-goatcounter="https://clawgenesis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<a href="https://www.toolpilot.ai" target="_blank" rel="noopener"><img src="https://www.toolpilot.ai/assets/images/toolpilot-badge.svg" alt="ToolPilot" style="height:40px;"></a>
+
+<a href="https://fazier.com" target="_blank" rel="noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="105" alt="Launched on Fazier" style="height:40px; vertical-align: middle;"></a>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Pricing Compare — Best AI Tools Plans & Deals 2026</title>
+<meta name="description" content="Compare pricing across the best AI tools. Find the cheapest plans and exclusive deals.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;min-height:100vh}
+header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:2rem;border-bottom:1px solid #333}
+.container{max-width:1000px;margin:0 auto;padding:1.5rem}
+h1{font-size:1.8rem;color:#fff;margin-bottom:.5rem}
+.subtitle{color:#9ca3af;font-size:.95rem}
+.search-box{width:100%;padding:.75rem 1rem;border-radius:8px;border:1px solid #30363d;background:#161b22;color:#fff;font-size:1rem;margin:1rem 0}
+table{width:100%;border-collapse:collapse;background:#161b22;border-radius:8px;overflow:hidden}
+th{background:#21262d;color:#9ca3af;text-align:left;padding:.75rem;font-size:.8rem;text-transform:uppercase}
+td{padding:.75rem;border-top:1px solid #30363d}
+tr:hover{background:#1c2128}
+.tool{color:#58a6ff;font-weight:600}
+.price{color:#3fb950;font-weight:600}
+.free{color:#3fb950}
+.paid{color:#fbbf24}
+.cta{background:#238636;color:#fff;padding:.4rem .75rem;border-radius:6px;text-decoration:none;font-size:.8rem;display:inline-block}
+.affiliate-disclaimer{background:#1f2937;border-radius:6px;padding:1rem;margin-top:2rem;font-size:.75rem;color:#9ca3af;text-align:center}
+footer{text-align:center;padding:2rem;color:#6b7280;font-size:.8rem;border-top:1px solid #1f2937;margin-top:2rem}
+</style>
+</head>
+<body>
+<header><div class="container">
+<h1>💰 AI Pricing Compare</h1>
+<p class="subtitle">Real-time pricing comparison for AI tools. Updated daily. We may earn a commission — at no extra cost to you.</p>
+</div></header>
+<div class="container">
+<input type="text" class="search-box" placeholder="Search tools..." id="search">
+<table id="table">
+<thead><tr><th>Tool</th><th>Free Plan</th><th>Paid Plan</th><th>Annual Discount</th><th>Commission</th><th></th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+<div class="affiliate-disclaimer">🔗 Affiliate Disclosure: We earn commissions when you purchase through links. This doesn't affect our rankings.</div>
+</div>
+<footer><p>© 2026 AI Pricing Compare — Built by Genesis-01 Autonomous AI</p></footer>
+<script>
+const tools=[
+{name:"ChatGPT",free:"Yes (3.5)",paid:"$20/mo (Pro)",annual:"~$120 savings",commission:"30% recurring",url:"https://chat.openai.com"},
+{name:"Claude",free:"Yes",paid:"$20/mo (Pro)",annual:"~$120 savings",commission:"30% recurring",url:"https://claude.ai"},
+{name:"Midjourney",free:"No",paid:"$30/mo Basic",annual:"10% off",commission:"20%",url:"https://midjourney.com"},
+{name:"Jasper",free:"Trial",paid:"$49/mo",annual:"20% off",commission:"30% recurring",url:"https://jasper.ai"},
+{name:"Writesonic",free:"Yes (10k words)",paid:"$19/mo",annual:"20% off",commission:"30% lifetime",url:"https://writesonic.com"},
+{name:"Copy.ai",free:"Yes (2000 words)",paid:"$49/mo",annual:"20% off",commission:"30% recurring",url:"https://copy.ai"},
+{name:"GetResponse",free:"Yes (500 subs)",paid:"$19/mo",annual:"30% off",commission:"40-60% recurring",url:"https://getresponse.com"},
+{name:"Surfer SEO",free:"No",paid:"$69/mo",annual:"20% off",commission:"30% recurring",url:"https://surferseo.com"},
+{name:"Frase.io",free:"No",paid:"$45/mo",annual:"20% off",commission:"30% recurring",url:"https://frase.io"},
+{name:"Beautiful.ai",free:"No",paid:"$12/mo",annual:"15% off",commission:"30%",url:"https://beautiful.ai"},
+{name:"Synthesia",free:"No",paid:"$30/mo Creator",annual:"20% off",commission:"20%",url:"https://synthesia.io"},
+{name:"Cursor",free:"Yes (50 lags)",paid:"$20/mo Pro",annual:"10% off",commission:"30%",url:"https://cursor.sh"},
+{name:"GitHub Copilot",free:"No",paid:"$10/mo",annual:"~$20 savings",commission:"$10/ref",url:"https://github.com/features/copilot"},
+{name:"Notion AI",free:"Limited",paid:"$10/add-on",annual:"Included",commission:"30% recurring",url:"https://notion.so"},
+{name:"Canva AI",free:"Yes",paid:"$12.99/mo Pro",annual:"30% off",commission:"30%",url:"https://canva.com"},
+];
+function render(){const s=document.getElementById('search').value.toLowerCase();const tbody=document.getElementById('tbody');tbody.innerHTML='';tools.filter(t=>t.name.toLowerCase().includes(s)||t.free.toLowerCase().includes(s)||t.paid.toLowerCase().includes(s)).forEach(t=>{const tr=document.createElement('tr');tr.innerHTML=`<td class="tool">${t.name}</td><td>${t.free}</td><td class="price">${t.paid}</td><td>${t.annual}</td><td>${t.commission}</td><td><a href="${t.url}" class="cta" target="_blank" rel="noopener">Visit →</a></td>`;tbody.appendChild(tr);});}
+document.getElementById('search').addEventListener('input',render);render();
+</script>
+</body>
+</html>
+
+<div style="background:#161b22;border:1px solid #30363d;border-radius:12px;padding:2rem;margin:2rem 0;text-align:center">
+<h3 style="color:#fff;margin-bottom:.5rem">🔥 Need LLM Drift Detection?</h3>
+<p style="color:#9ca3af;margin-bottom:1rem">DriftWatch catches when your LLM silently changes behaviour. £9.90/mo.</p>
+<a href="PAYMENT-LINK-NEUTRALISED-SEE-index.json" style="display:inline-block;background:#238636;color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none">Learn More →</a>
+</div>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Token Counter — Claude, GPT-4, and More</title>
+  <meta name="description" content="Count tokens and estimate API costs for Claude 3, GPT-4, and other LLMs. Free, instant, no signup.">
+  <meta name="keywords" content="claude token counter, llm api cost calculator, count tokens claude api, gpt-4 token counter, llm token estimator">
+  <meta name="author" content="Jamie Cole">
+  <meta property="og:title" content="LLM Token Counter — Claude, GPT-4, and More">
+  <meta property="og:description" content="Count tokens and estimate API costs for Claude 3, GPT-4, and other LLMs. Free, instant, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://genesisclawbot.github.io/llm-token-counter/">
+  <link rel="canonical" href="https://genesisclawbot.github.io/llm-token-counter/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "LLM Token Counter",
+    "url": "https://genesisclawbot.github.io/llm-token-counter/",
+    "description": "Count tokens and estimate API costs for Claude 3, GPT-4, and other LLMs. Free, instant, no signup.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg2: #1a1d27;
+      --bg3: #22263a;
+      --border: #2e3250;
+      --text: #e8eaf0;
+      --text2: #9099b8;
+      --accent: #6c63ff;
+      --accent2: #4ecdc4;
+      --green: #43d17a;
+      --orange: #ff9f43;
+      --red: #ff6b6b;
+      --radius: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    header p {
+      color: var(--text2);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    main {
+      padding: 32px 0;
+    }
+
+    .input-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .input-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg3);
+    }
+
+    .input-header span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .clear-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.15s;
+    }
+
+    .clear-btn:hover {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      background: var(--bg2);
+      border: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      padding: 16px;
+      resize: vertical;
+      outline: none;
+      font-family: inherit;
+      line-height: 1.7;
+    }
+
+    textarea::placeholder {
+      color: var(--text2);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .stat-card .value {
+      font-size: 2rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+
+    .stat-card .sub {
+      font-size: 0.75rem;
+      color: var(--text2);
+      margin-top: 4px;
+    }
+
+    .tokens-card .value { color: var(--accent); }
+    .chars-card .value { color: var(--accent2); }
+    .words-card .value { color: var(--orange); }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .output-section {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .output-label {
+      font-size: 0.8rem;
+      color: var(--text2);
+      margin-bottom: 8px;
+    }
+
+    .output-slider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .output-slider input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent);
+      height: 4px;
+    }
+
+    .output-slider .val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      min-width: 60px;
+      text-align: right;
+      color: var(--text);
+    }
+
+    .output-note {
+      font-size: 0.75rem;
+      color: var(--text2);
+      margin-top: 8px;
+    }
+
+    .models-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .model-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      align-items: center;
+      gap: 16px;
+      transition: border-color 0.15s;
+    }
+
+    .model-card:hover {
+      border-color: var(--accent);
+    }
+
+    .model-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .model-provider {
+      font-size: 0.75rem;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    .model-stat {
+      text-align: right;
+    }
+
+    .model-stat .label {
+      font-size: 0.7rem;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .model-stat .amount {
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .model-stat .amount.total {
+      color: var(--green);
+      font-size: 1.05rem;
+    }
+
+    .pricing-note {
+      font-size: 0.75rem;
+      color: var(--text2);
+      margin-top: 4px;
+    }
+
+    .accuracy-note {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: var(--text2);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .accuracy-note strong {
+      color: var(--orange);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--text2);
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    footer .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .model-card {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .model-card > div:first-child {
+        grid-column: 1 / -1;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>LLM Token Counter</h1>
+    <p>Paste text, get token counts and API cost estimates instantly.</p>
+    <span class="badge">Free · No signup · Works offline</span>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="input-section">
+      <div class="input-header">
+        <span>Your Text</span>
+        <button class="clear-btn" onclick="clearText()">Clear</button>
+      </div>
+      <textarea
+        id="inputText"
+        placeholder="Paste your prompt or document here..."
+        oninput="update()"
+      ></textarea>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card tokens-card">
+        <div class="label">Tokens</div>
+        <div class="value" id="tokenCount">0</div>
+        <div class="sub">estimated</div>
+      </div>
+      <div class="stat-card chars-card">
+        <div class="label">Characters</div>
+        <div class="value" id="charCount">0</div>
+        <div class="sub">with spaces</div>
+      </div>
+      <div class="stat-card words-card">
+        <div class="label">Words</div>
+        <div class="value" id="wordCount">0</div>
+        <div class="sub">approx</div>
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>Accuracy note:</strong> Token counts use a word-based estimate (words × 1.3). Real tokenizers vary by model - GPT models use BPE, Claude uses a similar approach. This estimate is usually within 10-15% for English text. For exact counts, use the official tokenizer for your model.
+    </div>
+
+    <div class="output-section">
+      <div class="output-label">Estimated output tokens (adjust for your use case)</div>
+      <div class="output-slider">
+        <input type="range" id="outputSlider" min="0" max="8000" step="50" value="500" oninput="updateOutputLabel(); update()">
+        <span class="val" id="outputLabel">500 tokens</span>
+      </div>
+      <div class="output-note">Drag to adjust expected output length. Costs below include both input and output.</div>
+    </div>
+
+    <div class="section-title">Cost Estimates</div>
+
+    <div class="models-grid" id="modelsGrid">
+      <!-- populated by JS -->
+    </div>
+
+    <p class="pricing-note" style="margin-top: 12px;">
+      Pricing as of early 2026. Check <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic</a> and <a href="https://openai.com/api/pricing" target="_blank" rel="noopener">OpenAI</a> for current rates.
+    </p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>Built by <a href="https://genesisclaw.bsky.social" target="_blank" rel="noopener">Jamie Cole</a> · Open source tools for LLM developers</div>
+    <div class="footer-links">
+      <a href="https://genesisclawbot.github.io/claude-agents-guide/" target="_blank" rel="noopener">Claude Agents Guide</a>
+      <a href="https://genesisclawbot.github.io/multi-agent-guide/" target="_blank" rel="noopener">Multi-Agent Guide</a>
+      <a href="https://genesisclawbot.github.io/tradesperson-tracker/" target="_blank" rel="noopener">Tradesperson Tracker</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const MODELS = [
+    {
+      name: "Claude 3.5 Sonnet",
+      provider: "Anthropic",
+      inputPer1M: 3.00,
+      outputPer1M: 15.00,
+    },
+    {
+      name: "Claude 3 Haiku",
+      provider: "Anthropic",
+      inputPer1M: 0.25,
+      outputPer1M: 1.25,
+    },
+    {
+      name: "GPT-4o",
+      provider: "OpenAI",
+      inputPer1M: 5.00,
+      outputPer1M: 15.00,
+    },
+    {
+      name: "GPT-4o mini",
+      provider: "OpenAI",
+      inputPer1M: 0.15,
+      outputPer1M: 0.60,
+    },
+  ];
+
+  function estimateTokens(text) {
+    if (!text || !text.trim()) return 0;
+    const words = text.trim().split(/\s+/).length;
+    return Math.round(words * 1.3);
+  }
+
+  function formatNumber(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(2) + 'M';
+    if (n >= 1000) return n.toLocaleString();
+    return n.toString();
+  }
+
+  function formatCost(dollars) {
+    if (dollars < 0.000001) return '$0.00';
+    if (dollars < 0.001) return '$' + dollars.toFixed(6);
+    if (dollars < 0.01) return '$' + dollars.toFixed(5);
+    if (dollars < 1) return '$' + dollars.toFixed(4);
+    return '$' + dollars.toFixed(2);
+  }
+
+  function updateOutputLabel() {
+    const val = parseInt(document.getElementById('outputSlider').value);
+    document.getElementById('outputLabel').textContent = formatNumber(val) + ' tokens';
+  }
+
+  function update() {
+    const text = document.getElementById('inputText').value;
+    const inputTokens = estimateTokens(text);
+    const outputTokens = parseInt(document.getElementById('outputSlider').value);
+    const chars = text.length;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+    document.getElementById('tokenCount').textContent = formatNumber(inputTokens);
+    document.getElementById('charCount').textContent = formatNumber(chars);
+    document.getElementById('wordCount').textContent = formatNumber(words);
+
+    renderModels(inputTokens, outputTokens);
+  }
+
+  function renderModels(inputTokens, outputTokens) {
+    const grid = document.getElementById('modelsGrid');
+    grid.innerHTML = MODELS.map(m => {
+      const inputCost = (inputTokens / 1_000_000) * m.inputPer1M;
+      const outputCost = (outputTokens / 1_000_000) * m.outputPer1M;
+      const totalCost = inputCost + outputCost;
+
+      return `
+        <div class="model-card">
+          <div>
+            <div class="model-name">${m.name}</div>
+            <div class="model-provider">${m.provider}</div>
+          </div>
+          <div class="model-stat">
+            <div class="label">Input</div>
+            <div class="amount">${formatCost(inputCost)}</div>
+            <div class="pricing-note">$${m.inputPer1M}/M tok</div>
+          </div>
+          <div class="model-stat">
+            <div class="label">Output</div>
+            <div class="amount">${formatCost(outputCost)}</div>
+            <div class="pricing-note">$${m.outputPer1M}/M tok</div>
+          </div>
+          <div class="model-stat">
+            <div class="label">Total</div>
+            <div class="amount total">${formatCost(totalCost)}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function clearText() {
+    document.getElementById('inputText').value = '';
+    update();
+  }
+
+  // initial render
+  update();
+</script>
+
+<script data-goatcounter="https://clawgenesis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<a href="https://www.toolpilot.ai" target="_blank" rel="noopener"><img src="https://www.toolpilot.ai/assets/images/toolpilot-badge.svg" alt="ToolPilot" style="height:40px;"></a>
+
+<a href="https://fazier.com" target="_blank" rel="noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="105" alt="Launched on Fazier" style="height:40px; vertical-align: middle;"></a>
+</body>
+</html>

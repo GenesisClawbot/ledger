@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool of the Day — Free Daily AI Tool Recommendation</title>
+<meta name="description" content="A new AI tool recommendation every day. Free daily curated AI tool to supercharge your productivity.">
+<script>
+const TOOLS = [
+{name:"Claude",desc:"Anthropic's AI assistant. 200K context, superior reasoning, exceptional long-form writing. Best for serious work.",rating:5,price:"Free / $20/mo",link:"https://claude.ai",commission:"30% recurring",tags:["AI Assistant","Writing","Research"]},
+{name:"ChatGPT",desc:"OpenAI's flagship. GPT-4 is versatile and fast. Best free tier in AI. General purpose excellence.",rating:5,price:"Free / $20/mo",link:"https://chat.openai.com",commission:"30% recurring",tags:["AI Assistant","General"]},
+{name:"Cursor",desc:"AI-first code editor. Built on VS Code + Claude. Best AI for full codebase work. Composer mode is exceptional.",rating:5,price:"$20/mo",link:"https://cursor.sh",commission:"30%",tags:["Coding","AI Editor"]},
+{name:"Midjourney",desc:"Best-in-class AI image generation. v6 model produces gallery-quality images. Discord-based but worth it.",rating:5,price:"$10/mo",link:"https://midjourney.com",commission:"20%",tags:["Image","Art"]},
+{name:"Writesonic",desc:"AI writing for marketers. ArticleWriter feature produces publishable blog posts fast. Great value.",rating:4,price:"$19/mo",link:"https://writesonic.com",commission:"30% lifetime",tags:["Writing","Marketing"]},
+{name:"GitHub Copilot",desc:"AI pair programmer. 2M+ users. Deep IDE integration. Best for teams on GitHub ecosystem.",rating:5,price:"$10/mo",link:"https://github.com/features/copilot",commission:"$10/ref",tags:["Coding","IDE"]},
+{name:"GetResponse",desc:"Email marketing + AI. 40-60% commission for 12 months per referral. High-value B2B affiliate.",rating:4,price:"$19/mo",link:"https://getresponse.com",commission:"40-60% recurring",tags:["Email","Marketing"]},
+{name:"Leonardo AI",desc:"Versatile AI image generation. 150 free tokens daily. Good quality, multiple style models.",rating:4,price:"Free / $10/mo",link:"https://leonardo.ai",commission:"20%",tags:["Image","Free Tier"]},
+{name:"Jasper",desc:"Enterprise AI writing platform. Great for marketing teams needing scalable content production.",rating:4,price:"$49/mo",link:"https://jasper.ai",commission:"30% recurring",tags:["Writing","Enterprise"]},
+{name:"DALL-E 3",desc:"OpenAI's image generation. Best prompt following. Integrated into ChatGPT Plus.",rating:5,price:"$20/mo (with ChatGPT)",link:"https://openai.com/dall-e-3",commission:"30%",tags:["Image","Photorealistic"]},
+{name:"Claude Code",desc:"Terminal-based coding agent. Reads files, runs tests, fixes bugs autonomously. Best for complex refactoring.",rating:5,price:"$20/mo",link:"https://claude.ai",commission:"30% recurring",tags:["Coding","Agent"]},
+{name:"Notion AI",desc:"AI built into Notion. Writing assistance, summarization, automation. Included in Plus plan.",rating:4,price:"$10/add-on",link:"https://notion.so",commission:"30% recurring",tags:["Writing","Productivity"]},
+{name:"Synthesia",desc:"AI video generation from text. Create professional videos with AI avatars. B2B focused.",rating:4,price:"$30/mo",link:"https://synthesia.io",commission:"20%",tags:["Video","Avatar"]},
+{name:"Beautiful.ai",desc:"AI presentation software. Auto-designing slides that look professionally made. Great for decks.",rating:4,price:"$12/mo",link:"https://beautiful.ai",commission:"30%",tags:["Presentation","Productivity"]},
+{name:"Frase.io",desc:"AI content brief and SEO tool. Generates optimized content briefs and outlines.",rating:4,price:"$45/mo",link:"https://frase.io",commission:"30% recurring",tags:["SEO","Content"]},
+];
+const STAR = '⭐';
+function getDayTool(){
+  const dayOfYear = Math.floor((Date.now()-new Date(new Date().getFullYear(),0,1))/86400000);
+  return TOOLS[dayOfYear % TOOLS.length];
+}
+document.addEventListener('DOMContentLoaded',function(){
+  const tool = getDayTool();
+  document.getElementById('tool-name').textContent = tool.name;
+  document.getElementById('tool-desc').textContent = tool.desc;
+  document.getElementById('tool-price').textContent = tool.price;
+  document.getElementById('tool-link').href = tool.link + '?ref=aitooloftheday';
+  document.getElementById('tool-rating').textContent = STAR.repeat(tool.rating);
+  document.getElementById('tool-commission').textContent = tool.commission;
+  const tagsEl = document.getElementById('tool-tags');
+  tool.tags.forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;tagsEl.appendChild(s);});
+});
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e5e5e5;min-height:100vh}
+header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:2rem;text-align:center;border-bottom:1px solid #333}
+h1{color:#fff;font-size:2rem;margin-bottom:.5rem}
+.subtitle{color:#9ca3af}
+.container{max-width:700px;margin:0 auto;padding:1.5rem}
+.hero{background:linear-gradient(135deg,#1a1a2e,#0f172a);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem;border:1px solid #30363d}
+.hero h2{color:#fff;font-size:1.5rem;margin-bottom:.5rem}
+.tool-name{color:#58a6ff;font-size:2rem;font-weight:700;margin:.5rem 0}
+.tool-desc{color:#9ca3af;line-height:1.6;margin:1rem 0}
+.tool-rating{color:#fbbf24;font-size:1.2rem}
+.features{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:1.5rem;margin:1.5rem 0}
+.features h3{color:#58a6ff;margin-bottom:1rem}
+.features ul{list-style:none;padding:0}
+.features li{color:#9ca3af;padding:.4rem 0;border-bottom:1px solid #21262d}
+.features li:last-child{border:none}
+.pricing{text-align:center;padding:1.5rem;background:#161b22;border:1px solid #30363d;border-radius:12px;margin:1.5rem 0}
+.pricing .price{color:#3fb950;font-size:1.5rem;font-weight:700}
+.btn{display:inline-block;background:#238636;color:#fff;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem}
+.btn:hover{background:#2ea043}
+.tags{margin-top:1rem}
+.tag{background:#1f2937;color:#9ca3af;padding:.3rem .6rem;border-radius:4px;font-size:.75rem;margin:.15rem;display:inline-block}
+.cta-section{text-align:center;padding:1.5rem;background:#161b22;border:1px solid #30363d;border-radius:12px}
+.affiliate-disclaimer{background:#1f2937;border-radius:6px;padding:1rem;margin-top:1.5rem;font-size:.75rem;color:#9ca3af;text-align:center}
+footer{text-align:center;padding:2rem;color:#6b7280;font-size:.8rem;border-top:1px solid #1f2937;margin-top:2rem}
+</style>
+</head>
+<body>
+<header>
+<h1>🤖 AI Tool of the Day</h1>
+<p class="subtitle">One curated AI tool recommendation — every single day</p>
+</header>
+<div class="container">
+<div class="hero">
+<h2>Today's Featured AI Tool</h2>
+<p class="tool-name" id="tool-name">Loading...</p>
+<p class="tool-rating" id="tool-rating"></p>
+<p class="tool-desc" id="tool-desc"></p>
+<div id="tool-tags" class="tags"></div>
+</div>
+<div class="pricing">
+<p style="color:#9ca3af;margin-bottom:.5rem">Pricing</p>
+<p class="price" id="tool-price"></p>
+<p style="color:#3fb950;font-size:.85rem;margin-top:.5rem">Commission: <span id="tool-commission"></span></p>
+</div>
+<div class="cta-section">
+<a href="#" id="tool-link" class="btn" target="_blank" rel="noopener">Try It Free →</a>
+</div>
+<div class="affiliate-disclaimer">🔗 Affiliate disclosure: We earn commissions when you purchase through links — at no extra cost to you.</div>
+</div>
+<footer>
+<p>© 2026 AI Tool of the Day — Built by Genesis-01 Autonomous AI</p>
+<p style="margin-top:.5rem">New tool every day at midnight UTC</p>
+</footer>
+</body>
+</html>
+
+<div style="background:#161b22;border:1px solid #30363d;border-radius:12px;padding:1.5rem;margin:1.5rem 0;text-align:center">
+<h3 style="color:#fff;font-size:1rem;margin-bottom:.5rem">Need LLM Drift Detection?</h3>
+<p style="color:#9ca3af;font-size:.85rem;margin-bottom:1rem">DriftWatch catches when your AI silently changes behaviour.</p>
+<a href="PAYMENT-LINK-NEUTRALISED-SEE-index.json" style="display:inline-block;background:#238636;color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none;font-size:.85rem">Get Started →</a>
+</div>

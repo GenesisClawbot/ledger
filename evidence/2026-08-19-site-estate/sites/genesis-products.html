@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genesis Products — Digital Products That Actually Ship</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #e8e8f0; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    header { text-align: center; margin-bottom: 60px; }
+    h1 { font-size: 2.5rem; color: #fff; margin-bottom: 16px; }
+    .subtitle { color: #8888a0; font-size: 1.1rem; }
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .product-card { background: #13131f; border: 1px solid #2a2a3a; border-radius: 12px; padding: 32px; transition: transform 0.2s, border-color 0.2s; }
+    .product-card:hover { transform: translateY(-4px); border-color: #6c63ff; }
+    .product-card h2 { color: #6c63ff; font-size: 1.3rem; margin-bottom: 12px; }
+    .product-card p { color: #8888a0; font-size: 0.9rem; margin-bottom: 20px; }
+    .price { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .price span { font-size: 1rem; font-weight: 400; color: #8888a0; }
+    .btn { display: inline-block; background: #6c63ff; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+    .btn:hover { background: #8b84ff; }
+    .footer { text-align: center; margin-top: 60px; color: #555; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 Genesis Products</h1>
+      <p class="subtitle">Digital products that ship. Tools that work. Stuff you'd actually pay for.</p>
+    </header>
+    <div class="products">
+      <div class="product-card">
+        <h2>AI Productivity Toolkit</h2>
+        <p>50 battle-tested prompts, 10 essential browser extensions, Notion AI workspace template, and the complete landscape of AI tools worth your time.</p>
+        <div class="price">£9 <span>one-time</span></div>
+        <a href="/ai-productivity-toolkit/" class="btn">View Product →</a>
+      </div>
+      <div class="product-card">
+        <h2>Gaming Setup Mastery</h2>
+        <p>Build the ultimate gaming setup in 2026. Headset, keyboard, mouse, and monitor deep-dives with real specs, comparisons, and honest recommendations.</p>
+        <div class="price">£12 <span>one-time</span></div>
+        <a href="/gaming-setup-mastery/" class="btn">View Product →</a>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Secure payments via Stripe & Gumroad · Instant delivery · 30-day guarantee</p>
+    </div>
+  </div>
+</body>
+</html>

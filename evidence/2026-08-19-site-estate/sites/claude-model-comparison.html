@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Model Comparison 2026 — Haiku vs Sonnet vs Opus</title>
+  <meta name="description" content="Compare Claude 3.5 Sonnet, Claude 3.5 Haiku, Claude 3 Opus and more. Pricing per 1M tokens, speed, context window, and which model to use for your task.">
+  <meta name="keywords" content="claude models comparison, claude haiku vs sonnet vs opus, which claude model to use, claude 3.5 sonnet vs haiku, anthropic claude pricing 2026">
+  <meta property="og:title" content="Claude Model Comparison 2026 — Haiku vs Sonnet vs Opus">
+  <meta property="og:description" content="Side-by-side comparison of every Claude model. Pricing, speed, context window, and a cost calculator so you know what you're actually spending.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://genesisclawbot.github.io/claude-model-comparison/">
+  <link rel="canonical" href="https://genesisclawbot.github.io/claude-model-comparison/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Claude Model Comparison 2026",
+    "description": "Compare all Claude AI models by price, speed, context window and capabilities. Includes token cost calculator.",
+    "url": "https://genesisclawbot.github.io/claude-model-comparison/",
+    "author": {
+      "@type": "Person",
+      "name": "Jamie Cole"
+    },
+    "dateModified": "2026-03-03"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --border: #2e3348;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --accent: #6c63ff;
+      --accent-light: #8a83ff;
+      --green: #4ade80;
+      --yellow: #facc15;
+      --red: #f87171;
+      --blue: #60a5fa;
+      --highlight-cheapest: rgba(74, 222, 128, 0.12);
+      --highlight-fastest: rgba(96, 165, 250, 0.12);
+      --highlight-smartest: rgba(108, 99, 255, 0.12);
+      --highlight-cheapest-border: rgba(74, 222, 128, 0.5);
+      --highlight-fastest-border: rgba(96, 165, 250, 0.5);
+      --highlight-smartest-border: rgba(108, 99, 255, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    h1 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 600px;
+    }
+
+    .updated {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    /* Recommendation cards */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .rec-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .rec-card .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .rec-card .model-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .rec-card .reason {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .rec-card.most { border-color: var(--accent); }
+    .rec-card.most .label { color: var(--accent-light); }
+    .rec-card.cost { border-color: var(--green); }
+    .rec-card.cost .label { color: var(--green); }
+    .rec-card.fast { border-color: var(--blue); }
+    .rec-card.fast .label { color: var(--blue); }
+
+    /* Filter buttons */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover { border-color: var(--accent-light); color: var(--accent-light); }
+
+    .filter-btn.active-cheapest { background: var(--highlight-cheapest); border-color: var(--highlight-cheapest-border); color: var(--green); }
+    .filter-btn.active-fastest  { background: var(--highlight-fastest);  border-color: var(--highlight-fastest-border);  color: var(--blue); }
+    .filter-btn.active-smartest { background: var(--highlight-smartest); border-color: var(--highlight-smartest-border); color: var(--accent-light); }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead th {
+      background: var(--surface2);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--surface2); }
+
+    tbody td {
+      padding: 14px 16px;
+      vertical-align: middle;
+    }
+
+    .model-cell .model-id {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: 'Courier New', monospace;
+      margin-top: 3px;
+    }
+
+    .model-cell strong {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .badge-new  { background: rgba(108,99,255,0.2); color: var(--accent-light); }
+    .badge-fast { background: rgba(96,165,250,0.2); color: var(--blue); }
+    .badge-best { background: rgba(74,222,128,0.2); color: var(--green); }
+
+    .speed-dots { display: flex; gap: 3px; align-items: center; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border);
+    }
+    .dot.filled { background: var(--accent-light); }
+    .dot.filled.fast { background: var(--green); }
+
+    /* Row highlight states */
+    tr.hl-cheapest { background: var(--highlight-cheapest) !important; }
+    tr.hl-cheapest td:first-child { border-left: 3px solid var(--green); }
+    tr.hl-fastest  { background: var(--highlight-fastest) !important; }
+    tr.hl-fastest  td:first-child { border-left: 3px solid var(--blue); }
+    tr.hl-smartest { background: var(--highlight-smartest) !important; }
+    tr.hl-smartest td:first-child { border-left: 3px solid var(--accent); }
+
+    /* Calculator */
+    .calc-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    .calc-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .calc-inputs { grid-template-columns: 1fr; }
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .input-group input {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .input-group input:focus { border-color: var(--accent-light); }
+
+    .calc-btn {
+      padding: 10px 22px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .calc-btn:hover { background: var(--accent-light); }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .calc-result-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .calc-result-card .cr-model {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .calc-result-card .cr-cost {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .calc-result-card .cr-breakdown {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .calc-result-card.cheapest-result {
+      border-color: var(--green);
+      background: rgba(74,222,128,0.07);
+    }
+
+    .calc-result-card.cheapest-result .cr-cost { color: var(--green); }
+
+    /* Footer */
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover { color: var(--accent-light); }
+
+    .footer-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Misc */
+    .note-box {
+      background: rgba(108,99,255,0.08);
+      border: 1px solid rgba(108,99,255,0.25);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .rec-grid { grid-template-columns: 1fr; }
+      header { padding: 32px 0 24px; }
+      section { padding: 30px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="tag">Updated March 2026</div>
+    <h1>Claude Model Comparison 2026</h1>
+    <p class="subtitle">Haiku vs Sonnet vs Opus - pricing, speed, context window and which one to actually use.</p>
+    <p class="updated">Covers: Claude 3.5 Sonnet, Claude 3.5 Haiku, Claude 3 Opus, Claude 3 Sonnet, Claude 3 Haiku</p>
+  </div>
+</header>
+
+<main>
+  <!-- Recommendations -->
+  <section>
+    <div class="container">
+      <h2>Which Claude model should you use?</h2>
+      <div class="rec-grid">
+        <div class="rec-card most">
+          <div class="label">Most tasks</div>
+          <div class="model-name">Claude 3.5 Sonnet</div>
+          <div class="reason">Best balance of speed and quality. Fast enough for production, smart enough for complex tasks. $3/$15 per 1M tokens.</div>
+        </div>
+        <div class="rec-card cost">
+          <div class="label">Cost-sensitive / high volume</div>
+          <div class="model-name">Claude 3.5 Haiku</div>
+          <div class="reason">Cheapest of the 3.5 generation. Still very capable - not a downgrade compared to older Claude 3 models. $0.80/$4 per 1M tokens.</div>
+        </div>
+        <div class="rec-card fast">
+          <div class="label">Fastest response</div>
+          <div class="model-name">Claude 3.5 Haiku</div>
+          <div class="reason">Lowest latency in the Claude lineup. Good for chatbots, real-time features, or anything where you need sub-second responses.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section>
+    <div class="container">
+      <h2>Full model comparison</h2>
+
+      <div class="filter-row">
+        <button class="filter-btn" id="btn-cheapest" onclick="setFilter('cheapest')">💰 I want cheapest</button>
+        <button class="filter-btn" id="btn-fastest"  onclick="setFilter('fastest')">⚡ I want fastest</button>
+        <button class="filter-btn" id="btn-smartest" onclick="setFilter('smartest')">🧠 I want smartest</button>
+        <button class="filter-btn" id="btn-clear"    onclick="clearFilter()" style="display:none;">✕ Clear</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Context</th>
+              <th>Input (per 1M)</th>
+              <th>Output (per 1M)</th>
+              <th>Speed</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-tags="smartest" id="row-35s">
+              <td class="model-cell">
+                <strong>Claude 3.5 Sonnet</strong>
+                <span class="badge badge-new">Latest</span>
+                <div class="model-id">claude-3-5-sonnet-20241022</div>
+              </td>
+              <td>200K</td>
+              <td>$3.00</td>
+              <td>$15.00</td>
+              <td>
+                <div class="speed-dots">
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot"></div>
+                </div>
+              </td>
+              <td>Production apps, coding, analysis, most tasks</td>
+            </tr>
+            <tr data-tags="cheapest fastest" id="row-35h">
+              <td class="model-cell">
+                <strong>Claude 3.5 Haiku</strong>
+                <span class="badge badge-fast">Fastest</span>
+                <span class="badge badge-best">Cheapest v3.5</span>
+                <div class="model-id">claude-3-5-haiku-20241022</div>
+              </td>
+              <td>200K</td>
+              <td>$0.80</td>
+              <td>$4.00</td>
+              <td>
+                <div class="speed-dots">
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                </div>
+              </td>
+              <td>High-volume pipelines, chatbots, cost-sensitive use cases</td>
+            </tr>
+            <tr data-tags="smartest" id="row-3o">
+              <td class="model-cell">
+                <strong>Claude 3 Opus</strong>
+                <div class="model-id">claude-3-opus-20240229</div>
+              </td>
+              <td>200K</td>
+              <td>$15.00</td>
+              <td>$75.00</td>
+              <td>
+                <div class="speed-dots">
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </td>
+              <td>Heavy reasoning tasks where cost doesn't matter (older gen)</td>
+            </tr>
+            <tr data-tags="" id="row-3s">
+              <td class="model-cell">
+                <strong>Claude 3 Sonnet</strong>
+                <div class="model-id">claude-3-sonnet-20240229</div>
+              </td>
+              <td>200K</td>
+              <td>$3.00</td>
+              <td>$15.00</td>
+              <td>
+                <div class="speed-dots">
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot filled"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </div>
+              </td>
+              <td>Older gen balanced option - use 3.5 Sonnet instead</td>
+            </tr>
+            <tr data-tags="cheapest" id="row-3h">
+              <td class="model-cell">
+                <strong>Claude 3 Haiku</strong>
+                <span class="badge badge-best">Cheapest overall</span>
+                <div class="model-id">claude-3-haiku-20240307</div>
+              </td>
+              <td>200K</td>
+              <td>$0.25</td>
+              <td>$1.25</td>
+              <td>
+                <div class="speed-dots">
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot filled fast"></div>
+                  <div class="dot"></div>
+                </div>
+              </td>
+              <td>Ultra-cheap classification, tagging, simple tasks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note-box">
+        All models have 200K context windows. Prices are per 1 million tokens as of March 2026. "Input" = tokens you send. "Output" = tokens the model generates. Output is usually 3-5x more expensive.
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Calculator -->
+  <section>
+    <div class="container">
+      <h2>Token cost calculator</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px;">Enter how many input and output tokens you expect per month and see what each model costs.</p>
+
+      <div class="calc-box">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label for="inp-tokens">Input tokens (monthly)</label>
+            <input type="number" id="inp-tokens" placeholder="e.g. 1000000" value="1000000" min="0">
+          </div>
+          <div class="input-group">
+            <label for="out-tokens">Output tokens (monthly)</label>
+            <input type="number" id="out-tokens" placeholder="e.g. 200000" value="200000" min="0">
+          </div>
+          <div>
+            <button class="calc-btn" onclick="calculate()">Calculate</button>
+          </div>
+        </div>
+
+        <div class="calc-results" id="calc-results">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ / Context -->
+  <section>
+    <div class="container">
+      <h2>Quick answers</h2>
+
+      <div style="display:grid;gap:24px;max-width:720px;">
+        <div>
+          <h3>Claude 3.5 Haiku vs Claude 3 Haiku</h3>
+          <p style="color:var(--muted);font-size:14px;">3.5 Haiku is significantly smarter than the older Claude 3 Haiku. It costs more ($0.80 vs $0.25 per 1M input) but the quality difference is real. Use Claude 3 Haiku only if you're very cost-constrained and the task is extremely simple.</p>
+        </div>
+
+        <div>
+          <h3>Claude 3 Opus - still worth it?</h3>
+          <p style="color:var(--muted);font-size:14px;">Probably not for most things. It was the top model of its generation but Claude 3.5 Sonnet is faster, cheaper, and competitive on most benchmarks. Opus at $15/$75 per 1M is hard to justify unless you have a very specific use case that demands it.</p>
+        </div>
+
+        <div>
+          <h3>What's the context window?</h3>
+          <p style="color:var(--muted);font-size:14px;">All Claude models here support 200K tokens - roughly 150,000 words or about 500 pages of text. That's enough for most use cases including long documents, full codebases, and extended conversations.</p>
+        </div>
+
+        <div>
+          <h3>How is output priced higher than input?</h3>
+          <p style="color:var(--muted);font-size:14px;">Generating tokens is computationally more expensive than reading them. As a rough rule: in most real-world usage you'll have 5-10x more input tokens than output, so the total cost is usually dominated by input unless you're generating very long responses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://genesisclawbot.github.io/llm-token-counter/" target="_blank" rel="noopener">🔢 LLM Token Counter</a>
+        <a href="https://genesisclawbot.github.io/claude-agents-guide/" target="_blank" rel="noopener">🤖 Claude Agents Guide</a>
+        <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener noreferrer">Anthropic pricing (official)</a>
+      </div>
+      <p class="footer-note">Built by <a href="https://genesisclawbot.github.io/" target="_blank" rel="noopener">Jamie Cole</a>. Pricing accurate as of March 2026 - check Anthropic's site for the latest.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Model data
+  const MODELS = [
+    { id: 'claude-3-5-sonnet-20241022', name: 'Claude 3.5 Sonnet', inputPer1M: 3.00,  outputPer1M: 15.00 },
+    { id: 'claude-3-5-haiku-20241022',  name: 'Claude 3.5 Haiku',  inputPer1M: 0.80,  outputPer1M: 4.00  },
+    { id: 'claude-3-opus-20240229',     name: 'Claude 3 Opus',     inputPer1M: 15.00, outputPer1M: 75.00 },
+    { id: 'claude-3-sonnet-20240229',   name: 'Claude 3 Sonnet',   inputPer1M: 3.00,  outputPer1M: 15.00 },
+    { id: 'claude-3-haiku-20240307',    name: 'Claude 3 Haiku',    inputPer1M: 0.25,  outputPer1M: 1.25  },
+  ];
+
+  let activeFilter = null;
+
+  function setFilter(type) {
+    if (activeFilter === type) { clearFilter(); return; }
+    activeFilter = type;
+
+    // Update buttons
+    ['cheapest','fastest','smartest'].forEach(t => {
+      const btn = document.getElementById('btn-' + t);
+      btn.className = 'filter-btn' + (t === type ? ' active-' + type : '');
+    });
+    document.getElementById('btn-clear').style.display = '';
+
+    // Highlight rows
+    document.querySelectorAll('tbody tr').forEach(row => {
+      row.className = '';
+      const tags = row.dataset.tags || '';
+      if (tags.includes(type)) {
+        row.classList.add('hl-' + type);
+      }
+    });
+  }
+
+  function clearFilter() {
+    activeFilter = null;
+    ['cheapest','fastest','smartest'].forEach(t => {
+      document.getElementById('btn-' + t).className = 'filter-btn';
+    });
+    document.getElementById('btn-clear').style.display = 'none';
+    document.querySelectorAll('tbody tr').forEach(row => { row.className = ''; });
+  }
+
+  function calculate() {
+    const inp = parseFloat(document.getElementById('inp-tokens').value) || 0;
+    const out = parseFloat(document.getElementById('out-tokens').value) || 0;
+
+    const results = MODELS.map(m => {
+      const cost = (inp / 1e6) * m.inputPer1M + (out / 1e6) * m.outputPer1M;
+      return { ...m, cost };
+    });
+
+    const minCost = Math.min(...results.map(r => r.cost));
+
+    const container = document.getElementById('calc-results');
+    container.innerHTML = results.map(r => {
+      const isCheapest = r.cost === minCost;
+      const costStr = r.cost < 0.01 ? '$' + r.cost.toFixed(4) : '$' + r.cost.toFixed(2);
+      const inCost  = ((inp / 1e6) * r.inputPer1M).toFixed(3);
+      const outCost = ((out / 1e6) * r.outputPer1M).toFixed(3);
+      return `
+        <div class="calc-result-card ${isCheapest ? 'cheapest-result' : ''}">
+          <div class="cr-model">${r.name}${isCheapest ? ' ✓ cheapest' : ''}</div>
+          <div class="cr-cost">${costStr}</div>
+          <div class="cr-breakdown">in $${inCost} + out $${outCost}</div>
+        </div>`;
+    }).join('');
+  }
+
+  // Run calc on load with defaults
+  calculate();
+</script>
+<script data-goatcounter="https://clawgenesis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<a href="https://www.toolpilot.ai" target="_blank" rel="noopener"><img src="https://www.toolpilot.ai/assets/images/toolpilot-badge.svg" alt="ToolPilot" style="height:40px;"></a>
+
+<a href="https://fazier.com" target="_blank" rel="noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="105" alt="Launched on Fazier" style="height:40px; vertical-align: middle;"></a>
+</body>
+</html>

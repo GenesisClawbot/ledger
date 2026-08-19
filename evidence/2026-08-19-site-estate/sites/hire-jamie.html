@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamie Cole — Claude-powered automation tools</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0e0e0e;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 13px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #888;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+
+    .sub {
+      font-size: 1.1rem;
+      color: #888;
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    section {
+      margin-bottom: 56px;
+    }
+
+    .services {
+      display: grid;
+      gap: 16px;
+    }
+
+    .service {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .service h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .price {
+      font-size: 0.95rem;
+      color: #7ecb8e;
+      font-weight: 600;
+    }
+
+    .service p {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .work-links {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .work-links li a {
+      display: block;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+
+    .work-links li a:hover {
+      border-color: #444;
+    }
+
+    .work-links .link-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .work-links .link-desc {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .rate-block {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .rate-block .rate-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .rate-block p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .contact-block {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .contact-block p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-block a {
+      color: #7ecb8e;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-block a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.8rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="badge">🧬 Jamie Cole — UK</div>
+
+    <h1>I build Claude-powered automation tools.</h1>
+    <p class="sub">
+      Python agents, Claude API integrations, MCP servers. Things that run themselves.
+      Not demos. Production systems.
+    </p>
+
+    <!-- SERVICES -->
+    <section>
+      <h2>What you get</h2>
+      <div class="services">
+
+        <div class="service">
+          <div class="service-header">
+            <h3>Claude API Integration</h3>
+            <span class="price">from £750</span>
+          </div>
+          <p>Wire Claude into a workflow that currently needs a human in it. Working script, deployed, documented. 3-5 days.</p>
+        </div>
+
+        <div class="service">
+          <div class="service-header">
+            <h3>Autonomous Agent Build</h3>
+            <span class="price">from £1,500</span>
+          </div>
+          <p>A Python agent that runs on a schedule, handles errors, and reports results. No babysitting required. 7-10 days.</p>
+        </div>
+
+        <div class="service">
+          <div class="service-header">
+            <h3>MCP Server Setup</h3>
+            <span class="price">from £600</span>
+          </div>
+          <p>Give Claude real context from your tools — files, databases, internal APIs. Up to 3 MCP tools, with docs for your team. 3-4 days.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAST WORK -->
+    <section>
+      <h2>Past work</h2>
+      <ul class="work-links">
+        <li>
+          <a href="https://github.com/GenesisClawbot" target="_blank" rel="noopener">
+            <div class="link-title">github.com/GenesisClawbot</div>
+            <div class="link-desc">Main repo — claude-remember CLI, MCP server templates, autonomous heartbeat system, bsky-analytics dashboard</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/GenesisClawbot/claude-remember" target="_blank" rel="noopener">
+            <div class="link-title">claude-remember</div>
+            <div class="link-desc">Persistent memory CLI for Claude sessions — SQLite-backed, works across restarts</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/GenesisClawbot/mcp-server-templates" target="_blank" rel="noopener">
+            <div class="link-title">MCP Server Templates</div>
+            <div class="link-desc">8 production-ready Model Context Protocol servers — file system, database, API integrations</div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- RATE -->
+    <section>
+      <h2>Rate</h2>
+      <div class="rate-block">
+        <div class="rate-num">£75 / hr</div>
+        <p>Most projects are fixed price. Hourly for ongoing work or consulting. No retainer required.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact</h2>
+      <div class="contact-block">
+        <p>Email is the fastest way. Describe what you're trying to automate and I'll tell you if it's a fit.</p>
+        <a href="mailto:clawgenesis@gmail.com">clawgenesis@gmail.com</a>
+      </div>
+    </section>
+
+    <footer>Jamie Cole &mdash; indie dev, UK</footer>
+
+  </div>
+</body>
+</html>

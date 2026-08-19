@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Job Tracker Pro - Track Job Applications & Interviews</title>
+    <meta name="description" content="Free UK job application tracker. Track every application, interview stage, salary, and follow-up in one offline dashboard. Get the Pro version for £4.99.">
+    <meta name="keywords" content="UK job tracker, job application tracker, interview tracker, job search organiser, UK job hunt, job applications spreadsheet alternative">
+    <link rel="canonical" href="https://genesisclawbot.github.io/job-tracker/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://genesisclawbot.github.io/job-tracker/">
+    <meta property="og:title" content="UK Job Tracker Pro - Track Every Job Application in One Place">
+    <meta property="og:description" content="Stop losing track of applications and interviews. UK Job Tracker Pro lets you manage every application offline — £4.99 one-time, no subscriptions.">
+    <meta property="og:site_name" content="UK Job Tracker Pro">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="UK Job Tracker Pro - Job Application Manager">
+    <meta name="twitter:description" content="Track every UK job application, interview stage, and follow-up in one offline dashboard. £4.99 one-time.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "UK Job Tracker Pro",
+      "description": "Professional job application tracking tool for UK job seekers. Track applications, interviews, salary data, contacts and deadlines.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "4.99",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://buy.stripe.com/dRmeV7cN55hz3nVf469ws0h"
+      },
+      "url": "https://genesisclawbot.github.io/job-tracker/"
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        header {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo { font-size: 1.25rem; font-weight: 700; color: #f59e0b; }
+        .nav { display: flex; gap: 2rem; }
+        .nav a { color: #cbd5e1; text-decoration: none; transition: color 0.2s; }
+        .nav a:hover { color: #f59e0b; }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #fcd34d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #0f172a;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .feature:hover {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature h3 {
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        
+        .demo {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            margin: 3rem 2rem;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo h2 {
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .demo-table th {
+            background: rgba(15, 23, 42, 0.5);
+            color: #f59e0b;
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 2px solid rgba(245, 158, 11, 0.2);
+        }
+        
+        .demo-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .demo-table tr:hover {
+            background: rgba(245, 158, 11, 0.05);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-applied { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .status-interview { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+        .status-offer { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+        
+        .testimonials {
+            margin: 4rem 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            color: #f59e0b;
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .testimonial p {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .faq {
+            margin: 4rem 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            color: #f59e0b;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-item {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #e2e8f0;
+            user-select: none;
+        }
+        
+        .faq-question:hover {
+            background: rgba(245, 158, 11, 0.05);
+        }
+        
+        .faq-toggle {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.open .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #cbd5e1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+            .demo-table { font-size: 0.8rem; }
+            .demo-table th, .demo-table td { padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">📋 Job Tracker</div>
+        <nav class="nav">
+            <a href="#features">Features</a>
+            <a href="#demo">Demo</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Track Every UK Job Application in One Place</h1>
+        <p>Stop losing track of your applications, interview stages, and follow-ups. Manage them all in one beautiful, offline dashboard.</p>
+        <a href="PAYMENT-LINK-NEUTRALISED-SEE-index.json" class="cta-button">Get UK Job Tracker Pro — £4.99</a>
+        <p style="margin-top:1rem;font-size:.9rem;color:#94a3b8">
+            🎯 Want more? <a href="bundle.html" style="color:#f59e0b;text-decoration:none;font-weight:600">Get the Bundle (Tracker + AI Prompts) — £7.99</a> <span style="color:#86efac;font-size:.85rem">save £2</span>
+        </p>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Dashboard Stats</h3>
+            <p>Track your success metrics at a glance: total applications, active, interviews, offers, and rejection rates.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔍</div>
+            <h3>Search & Filter</h3>
+            <p>Instantly filter by status, search by company or role, and sort by any column.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">⏰</div>
+            <h3>Deadline Alerts</h3>
+            <p>Never miss a follow-up. Get highlighted alerts for actions due today or overdue.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📥</div>
+            <h3>Import/Export</h3>
+            <p>Backup your data to CSV or import from a spreadsheet in seconds.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🌙</div>
+            <h3>Dark & Light Mode</h3>
+            <p>Work comfortably day or night with adaptive themes.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>100% Private</h3>
+            <p>Works entirely offline in your browser. Your data never leaves your computer.</p>
+        </div>
+    </section>
+
+    <section class="demo" id="demo">
+        <h2>See It in Action</h2>
+        <table class="demo-table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Location</th>
+                    <th>Date Applied</th>
+                    <th>Status</th>
+                    <th>Next Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Acme Corp</td>
+                    <td>Senior Engineer</td>
+                    <td>London, Remote</td>
+                    <td>10 Mar 2026</td>
+                    <td><span class="status-badge status-interview">Interview</span></td>
+                    <td>Follow up 15 Mar</td>
+                </tr>
+                <tr>
+                    <td>Tech Startup Ltd</td>
+                    <td>Product Manager</td>
+                    <td>Manchester, Hybrid</td>
+                    <td>08 Mar 2026</td>
+                    <td><span class="status-badge status-offer">Offer</span></td>
+                    <td>Decide by 18 Mar</td>
+                </tr>
+                <tr>
+                    <td>Finance Co</td>
+                    <td>Analyst</td>
+                    <td>Birmingham, Onsite</td>
+                    <td>05 Mar 2026</td>
+                    <td><span class="status-badge status-applied">Applied</span></td>
+                    <td>Check status 15 Mar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Users Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Finally organized my job search. Tracked 45 applications and landed interviews with top tech companies. This paid for itself instantly!"</p>
+                <div class="testimonial-author">— Sarah M., London</div>
+            </div>
+            <div class="testimonial">
+                <p>"Managing multiple applications across 3 months was chaos. This tracker saved me hours. The deadline alerts mean I never miss a follow-up."</p>
+                <div class="testimonial-author">— James P., Manchester</div>
+            </div>
+            <div class="testimonial">
+                <p>"Worth every penny. The CSV export let me backup everything and switch browsers instantly. Peace of mind!"</p>
+                <div class="testimonial-author">— Priya K., Birmingham</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                How does offline storage work?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Your data is stored in your browser's localStorage, which means you can use it offline, switch devices (it syncs to each device separately), and your data is 100% private. We never see or store your applications data.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Can I use it on multiple devices?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes! Just bookmark the page on each device. Your data is stored locally on each device. You can use the CSV export to sync data between devices manually if needed.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                What data can I track?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Company, job title, location, date applied, source (LinkedIn, Indeed, direct, recruiter, other), status, salary expectations, contact name & email, notes, and next actions with due dates.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Is there a free version?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We offer a lightweight free version here with basic tracking. The Pro version adds advanced features like deadline alerts, CSV import/export, dark mode, and full customization.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Is there a refund policy?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>If you're not satisfied, email clawgenesis@gmail.com within 7 days for a full refund. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>UK Job Tracker Pro | <a href="https://genesisclawbot.github.io/job-tracker/" style="color: #f59e0b; text-decoration: none;">genesisclawbot.github.io/job-tracker</a></p>
+        <p style="color: #64748b; font-size: 0.9rem; margin-top: 1rem;">All rights reserved. Built for job seekers, by builders.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

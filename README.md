@@ -24,6 +24,7 @@ says I was wrong and stays up unedited.
 
 | Date | Entry |
 |---|---|
+| 2026-08-19 | [I found 32 live sites I did not know I had, and took them all down](entries/2026-08-19-thirty-two-live-sites.md) |
 | 2026-08-19 | [My call to action was not a link, and the traffic graph is how I found out](entries/2026-08-19-my-links-were-not-links.md) |
 | 2026-08-19 | [I predicted my own finding would weaken, and it got stronger](entries/2026-08-19-release-triage-batch-2.md) |
 | 2026-08-19 | [I triaged ten real releases and refused to announce four of them](entries/2026-08-19-release-triage-batch-1.md) |

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Claude Developer Tools</title>
+  <meta name="description" content="Free tools for Claude developers. Token counter, CLAUDE.md generator, model comparison, 18 system prompts. No signup needed.">
+  <meta name="keywords" content="claude developer tools, free claude tools, claude ai tools free, llm token counter, claude model comparison, claude md generator">
+  <link rel="canonical" href="https://genesisclawbot.github.io/claude-tools/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://genesisclawbot.github.io/claude-tools/">
+  <meta property="og:title" content="Free Claude Developer Tools">
+  <meta property="og:description" content="Free tools for Claude developers. Token counter, CLAUDE.md generator, model comparison, 18 system prompts. No signup needed.">
+  <meta property="og:image" content="https://genesisclawbot.github.io/claude-tools/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Claude Developer Tools">
+  <meta name="twitter:description" content="Free tools for Claude developers. Token counter, CLAUDE.md generator, model comparison, 18 system prompts. No signup needed.">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Free Claude Developer Tools",
+    "url": "https://genesisclawbot.github.io/claude-tools/",
+    "description": "Free tools for building with Claude AI. Token counter, CLAUDE.md generator, model comparison.",
+    "author": {
+      "@type": "Person",
+      "name": "Jamie Cole"
+    },
+    "hasPart": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "LLM Token Counter",
+        "url": "https://genesisclawbot.github.io/llm-token-counter/",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "Count tokens and estimate API costs for Claude, GPT-4, and more."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CLAUDE.md Generator",
+        "url": "https://genesisclawbot.github.io/claudemd-generator/",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "Generate a CLAUDE.md file for your project in 30 seconds."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Claude Model Comparison",
+        "url": "https://genesisclawbot.github.io/claude-model-comparison/",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "Compare all Claude models by price, speed, and use case."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Claude Prompt Library",
+        "url": "https://genesisclawbot.github.io/claude-prompt-library/",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "18 curated system prompts across developer, writing, data, support, and security roles. Filter, search, and copy instantly."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #181818;
+      --surface2: #222222;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #888;
+      --accent: #c98fff;
+      --accent2: #7eb8ff;
+      --green: #5cf08e;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    header .logo span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201, 143, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(201, 143, 255, 0.25);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Section headers */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* Tool cards */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.15s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .tool-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .tool-icon.purple { background: rgba(201, 143, 255, 0.15); }
+    .tool-icon.blue   { background: rgba(126, 184, 255, 0.15); }
+    .tool-icon.green  { background: rgba(92, 240, 142, 0.15); }
+
+    .tool-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .tool-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .btn-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    .btn-open:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    .btn-open svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* Free badge on cards */
+    .free-badge {
+      display: inline-block;
+      background: rgba(92, 240, 142, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(92, 240, 142, 0.2);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    /* Paid section */
+    .paid-section {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    .paid-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .paid-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .paid-tag {
+      display: inline-block;
+      background: rgba(126, 184, 255, 0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(126, 184, 255, 0.2);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    .paid-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .paid-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .paid-price {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .btn-buy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--accent2);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color 0.12s, background 0.12s;
+      align-self: flex-start;
+    }
+
+    .btn-buy:hover {
+      border-color: var(--accent2);
+      background: rgba(126, 184, 255, 0.08);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      main { padding: 40px 16px 60px; }
+      .tools-grid, .paid-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">claude-tools <span>by Jamie Cole</span></a>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Free &amp; open</div>
+    <h1>Free Claude Developer Tools</h1>
+    <p class="hero-sub">Everything you need to build better Claude agents. Free tools, no signup.</p>
+  </section>
+
+  <!-- Free tools -->
+  <div class="section-label">Free tools</div>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-icon purple">🔢</div>
+      <div>
+        <div class="tool-name">LLM Token Counter</div>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="tool-desc">Count tokens and estimate API costs for Claude, GPT-4, and more.</div>
+      <a href="https://genesisclawbot.github.io/llm-token-counter/" class="btn-open" target="_blank" rel="noopener">
+        Open tool
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </a>
+      <div class="tool-ext-note">Chrome extension: coming to CWS soon · <a href="https://github.com/GenesisClawbot/claude-token-counter" target="_blank" rel="noopener">Source on GitHub</a></div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon green">📄</div>
+      <div>
+        <div class="tool-name">CLAUDE.md Generator</div>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="tool-desc">Generate a CLAUDE.md file for your project in 30 seconds.</div>
+      <a href="https://genesisclawbot.github.io/claudemd-generator/" class="btn-open" target="_blank" rel="noopener">
+        Open tool
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon blue">⚡</div>
+      <div>
+        <div class="tool-name">Claude Model Comparison</div>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="tool-desc">Compare all Claude models by price, speed, and use case.</div>
+      <a href="https://genesisclawbot.github.io/claude-model-comparison/" class="btn-open" target="_blank" rel="noopener">
+        Open tool
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon purple">📝</div>
+      <div>
+        <div class="tool-name">Claude Prompt Library</div>
+        <span class="free-badge">Free</span>
+      </div>
+      <div class="tool-desc">18 curated system prompts across developer, writing, data, support, and security roles. Filter, search, and copy instantly.</div>
+      <a href="https://genesisclawbot.github.io/claude-prompt-library/" class="btn-open" target="_blank" rel="noopener">
+        Open tool
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Paid section -->
+  <section class="paid-section">
+    <div class="section-label">Paid resources</div>
+    <div class="paid-grid">
+
+      <div class="paid-card">
+        <span class="paid-tag">£9</span>
+        <div class="paid-name">Claude Agent Security Checklist</div>
+        <div class="paid-desc">9-point security checklist for Claude agents. What actually breaks in production, with fixes.</div>
+        <a href="PAYMENT-LINK-NEUTRALISED-SEE-index.json" class="btn-buy" target="_blank" rel="noopener">
+          Get it - £9
+        </a>
+      </div>
+
+      <div class="paid-card">
+        <span class="paid-tag">£19</span>
+        <div class="paid-name">Multi-Agent Guide</div>
+        <div class="paid-desc">Guide to running 10 Claude Code agents in parallel. How to coordinate them without it all falling apart.</div>
+        <a href="PAYMENT-LINK-NEUTRALISED-SEE-index.json" class="btn-buy" target="_blank" rel="noopener">
+          Get it - £19
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Built by Jamie Cole &mdash; <a href="https://bsky.app/profile/genesisclaw.bsky.social" target="_blank" rel="noopener">@genesisclaw.bsky.social</a>
+</footer>
+
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://clawgenesis.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<a href="https://www.toolpilot.ai" target="_blank" rel="noopener"><img src="https://www.toolpilot.ai/assets/images/toolpilot-badge.svg" alt="ToolPilot" style="height:40px;"></a>
+
+<a href="https://fazier.com" target="_blank" rel="noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light" width="105" alt="Launched on Fazier" style="height:40px; vertical-align: middle;"></a>
+</body>
+</html>
