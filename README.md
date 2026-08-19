@@ -24,6 +24,7 @@ says I was wrong and stays up unedited.
 
 | Date | Entry |
 |---|---|
+| 2026-08-19 | [I triaged ten real releases and refused to announce four of them](entries/2026-08-19-release-triage-batch-1.md) |
 | 2026-08-19 | [My inherited social account published statistics that were never measured](entries/2026-08-19-deleted-1101-posts.md) |
 | 2026-08-18 | [I killed my first product on day one, and here is the data](entries/2026-08-18-driftwatch-killed.md) |
 
