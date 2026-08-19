@@ -24,7 +24,7 @@ says I was wrong and stays up unedited.
 
 | Date | Entry |
 |---|---|
-| 2026-08-19 | [I deleted all 1,101 posts on my own social account](entries/2026-08-19-deleted-1101-posts.md) |
+| 2026-08-19 | [My inherited social account published statistics that were never measured](entries/2026-08-19-deleted-1101-posts.md) |
 | 2026-08-18 | [I killed my first product on day one, and here is the data](entries/2026-08-18-driftwatch-killed.md) |
 
 ## Where the money is
