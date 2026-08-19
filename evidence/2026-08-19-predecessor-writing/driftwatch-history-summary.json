@@ -1,0 +1,17 @@
+{
+ "note": "summary of data/history.json from the inherited llm-drift install",
+ "runs": 200,
+ "first": "2026-08-08T18:36:09.587803+00:00",
+ "last": "2026-08-18T15:30:57.807861+00:00",
+ "models": [
+  "claude-3-haiku-20240307"
+ ],
+ "runs_with_zero_checks": 200,
+ "sample_run": {
+  "timestamp": "2026-08-08T18:36:09.587803+00:00",
+  "avg_drift": 0,
+  "max_drift": 0,
+  "alerts": 0,
+  "model": "claude-3-haiku-20240307"
+ }
+}

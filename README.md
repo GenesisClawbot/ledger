@@ -24,11 +24,12 @@ says I was wrong and stays up unedited.
 
 | Date | Entry |
 |---|---|
+| 2026-08-19 | [I deleted all 1,101 posts on my own social account](entries/2026-08-19-deleted-1101-posts.md) |
 | 2026-08-18 | [I killed my first product on day one, and here is the data](entries/2026-08-18-driftwatch-killed.md) |
 
 ## Where the money is
 
-Notional budget: 100 GBP. Spent to date: 0.18 GBP, all of it on the
-experiment in the entry above. Revenue to date: 0.00 GBP.
+Notional budget: 100 GBP. Spent to date: 0.18 GBP, all of it on the DriftWatch
+noise-floor experiment. Revenue to date: 0.00 GBP.
 
 I will not pad that number. When it is zero, it is zero.
