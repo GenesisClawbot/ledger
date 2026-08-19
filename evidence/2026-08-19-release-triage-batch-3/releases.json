@@ -1,0 +1,114 @@
+[
+  {
+    "repo": "anthropics/claude-code",
+    "tag": "v2.1.235",
+    "published_at": "2026-08-18T20:38:54Z",
+    "age_days": 0.7,
+    "body_chars": 2711,
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.235"
+  },
+  {
+    "repo": "openai/codex",
+    "tag": "rust-v0.148.0",
+    "published_at": "2026-08-18T22:26:03Z",
+    "age_days": 0.6,
+    "body_chars": 27747,
+    "url": "https://github.com/openai/codex/releases/tag/rust-v0.148.0"
+  },
+  {
+    "repo": "google-gemini/gemini-cli",
+    "tag": "v0.55.1",
+    "published_at": "2026-08-11T21:15:10Z",
+    "age_days": 7.7,
+    "body_chars": 13017,
+    "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.55.1"
+  },
+  {
+    "repo": "All-Hands-AI/OpenHands",
+    "tag": "v1.14.0",
+    "published_at": "2026-08-17T21:41:36Z",
+    "age_days": 1.7,
+    "body_chars": 2486,
+    "url": "https://github.com/OpenHands/OpenHands/releases/tag/v1.14.0"
+  },
+  {
+    "repo": "browser-use/browser-use",
+    "tag": "0.13.8",
+    "published_at": "2026-08-16T18:48:54Z",
+    "age_days": 2.8,
+    "body_chars": 6979,
+    "url": "https://github.com/browser-use/browser-use/releases/tag/0.13.8"
+  },
+  {
+    "repo": "vercel/ai",
+    "tag": "ai@7.0.68",
+    "published_at": "2026-08-18T22:48:00Z",
+    "age_days": 0.6,
+    "body_chars": 85,
+    "url": "https://github.com/vercel/ai/releases/tag/ai%407.0.68"
+  },
+  {
+    "repo": "anthropics/anthropic-sdk-typescript",
+    "tag": "sdk-v0.118.0",
+    "published_at": "2026-08-19T13:29:19Z",
+    "age_days": 0,
+    "body_chars": 2025,
+    "url": "https://github.com/anthropics/anthropic-sdk-typescript/releases/tag/sdk-v0.118.0"
+  },
+  {
+    "repo": "openai/openai-agents-python",
+    "tag": "v0.21.1",
+    "published_at": "2026-08-16T22:28:55Z",
+    "age_days": 2.6,
+    "body_chars": 3308,
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.21.1"
+  },
+  {
+    "repo": "pydantic/pydantic-ai",
+    "tag": "v2.32.0",
+    "published_at": "2026-08-19T03:51:35Z",
+    "age_days": 0.4,
+    "body_chars": 1786,
+    "url": "https://github.com/pydantic/pydantic-ai/releases/tag/v2.32.0"
+  },
+  {
+    "repo": "crewAIInc/crewAI",
+    "tag": "1.15.16",
+    "published_at": "2026-08-14T00:08:07Z",
+    "age_days": 5.6,
+    "body_chars": 547,
+    "url": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.16"
+  },
+  {
+    "repo": "langchain-ai/langgraph",
+    "tag": "1.2.11",
+    "published_at": "2026-08-11T14:00:50Z",
+    "age_days": 8,
+    "body_chars": 959,
+    "url": "https://github.com/langchain-ai/langgraph/releases/tag/1.2.11"
+  },
+  {
+    "repo": "ollama/ollama",
+    "tag": "v0.32.14",
+    "published_at": "2026-08-15T19:41:23Z",
+    "age_days": 3.7,
+    "body_chars": 205,
+    "url": "https://github.com/ollama/ollama/releases/tag/v0.32.14"
+  },
+  {
+    "repo": "vllm-project/vllm",
+    "tag": "v0.27.1",
+    "published_at": "2026-08-11T10:47:49Z",
+    "age_days": 8.1,
+    "body_chars": 94,
+    "url": "https://github.com/vllm-project/vllm/releases/tag/v0.27.1"
+  },
+  {
+    "repo": "comfyanonymous/ComfyUI",
+    "tag": "v0.33.1",
+    "published_at": "2026-08-13T22:18:34Z",
+    "age_days": 5.6,
+    "body_chars": 2263,
+    "url": "https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.33.1"
+  }
+]

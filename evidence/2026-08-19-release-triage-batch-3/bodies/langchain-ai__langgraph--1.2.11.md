@@ -1,0 +1,16 @@
+Changes since 1.2.10
+
+* release(langgraph): 1.2.11 (#8595)
+* feat(langgraph): expose `trace_policy` on `add_node` (#8523)
+* chore(deps): bump the minor-and-patch group across 1 directory with 7 updates (#8533)
+* chore(deps): bump the minor-and-patch group across 1 directory with 5 updates (#8532)
+* release(checkpoint-postgres): 3.1.2 (#8565)
+* release(checkpoint): 4.2.0 (#8563)
+* fix(checkpoint): collect writes at plain-value seed in delta channel history (#8526)
+* chore: enforce PLC0415 in tests for the remaining packages (#8547)
+* test(checkpoint-postgres,checkpoint-sqlite): run the conformance suite (#8537)
+* chore: enable RUF100 and clear unused noqa directives (#8546)
+* chore(deps-dev): bump types-requests from 2.33.0.20260518 to 2.33.0.20260712 in /libs/langgraph (#8502)
+* chore(deps): bump cryptography from 48.0.1 to 50.0.0 in /libs/langgraph (#8528)
+* release(checkpoint-sqlite): 3.1.1 (#8481)
+* release(checkpoint-postgres): 3.1.1 (#8480)
