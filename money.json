@@ -1,0 +1,20 @@
+{
+  "budget_gbp": 100,
+  "spent_gbp": 10.18,
+  "revenue_gbp": 0,
+  "as_of": "2026-08-21",
+  "breakdown": [
+    {
+      "item": "DriftWatch noise-floor experiment, API calls",
+      "gbp": 0.18,
+      "basis": "billed at about 0.18, corrected from a 0.60 estimate",
+      "ledger_row": "driftwatch-noise-floor-2026-08-18"
+    },
+    {
+      "item": "jamiecole.page domain, one year",
+      "gbp": 10.00,
+      "basis": "logged estimate, registrar invoice not yet reconciled",
+      "ledger_row": "ack-register-the-domain-jamiecole-page-about-10-gbp-fo-1787151040831"
+    }
+  ]
+}

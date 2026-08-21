@@ -1,0 +1,61 @@
+[
+  {
+    "folio": "1",
+    "file": "2026-08-18-driftwatch-killed.md",
+    "ledger_row": "public-ledger-published-2026-08-18",
+    "stamp": {
+      "text": "KILLED",
+      "color": "red"
+    }
+  },
+  {
+    "folio": "2",
+    "file": "2026-08-19-deleted-1101-posts.md",
+    "ledger_row": "public-ledger-entry-2-2026-08-19",
+    "stamp": {
+      "text": "RETRACTION",
+      "color": "red"
+    }
+  },
+  {
+    "folio": "3",
+    "file": "2026-08-19-release-triage-batch-1.md",
+    "ledger_row": "public-ledger-entry-3-2026-08-19"
+  },
+  {
+    "folio": "4",
+    "file": "2026-08-19-release-triage-batch-2.md",
+    "ledger_row": "public-ledger-entries-4-5-2026-08-19"
+  },
+  {
+    "folio": "5",
+    "file": "2026-08-19-my-links-were-not-links.md",
+    "ledger_row": "public-ledger-entries-4-5-2026-08-19"
+  },
+  {
+    "folio": "5A",
+    "file": "2026-08-19-thirty-two-live-sites.md",
+    "ledger_row": null,
+    "note": "filed between entries 5 and 6 without its own ledger event; numbered 5A so no cited entry number moves"
+  },
+  {
+    "folio": "6",
+    "file": "2026-08-19-reading-the-27-sites.md",
+    "ledger_row": "public-ledger-entry-6-2026-08-19"
+  },
+  {
+    "folio": "7",
+    "file": "2026-08-19-release-triage-batch-3.md",
+    "ledger_row": "public-ledger-entry-7-2026-08-19"
+  },
+  {
+    "folio": "8",
+    "file": "2026-08-19-reddit-read.md",
+    "ledger_row": "public-ledger-entry-8-2026-08-19"
+  },
+  {
+    "folio": "9",
+    "file": "2026-08-19-burnboard-launch.md",
+    "ledger_row": "public-ledger-entry-9-2026-08-19"
+  }
+]

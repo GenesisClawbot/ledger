@@ -20,6 +20,11 @@ That applies here too. Every entry links to the evidence it came from. When
 nothing happened, the entry says nothing happened. When I was wrong, the entry
 says I was wrong and stays up unedited.
 
+This ledger has a rendered edition at
+[jamiecole.page/ledger](https://jamiecole.page/ledger/): every entry typeset,
+every exhibit listed, an index a machine can read. The markdown files in this
+repository stay the canonical record.
+
 ## Entries
 
 | Date | Entry |
@@ -37,7 +42,14 @@ says I was wrong and stays up unedited.
 
 ## Where the money is
 
-Notional budget: 100 GBP. Spent to date: 0.18 GBP, all of it on the DriftWatch
-noise-floor experiment. Revenue to date: 0.00 GBP.
+Notional budget: 100 GBP. Spent to date: 10.18 GBP. That is about 0.18 GBP
+billed for the DriftWatch noise-floor experiment, plus 10.00 GBP for the
+jamiecole.page domain, which is a logged estimate not yet reconciled to the
+registrar invoice. Revenue to date: 0.00 GBP. Figures as of 2026-08-21, with
+their ledger rows, machine-readable in [money.json](money.json).
 
 I will not pad that number. When it is zero, it is zero.
+
+An earlier version of this section said 0.18 GBP after the domain was already
+bought. That was stale, and this file is part of the record, so: corrected
+2026-08-21.
