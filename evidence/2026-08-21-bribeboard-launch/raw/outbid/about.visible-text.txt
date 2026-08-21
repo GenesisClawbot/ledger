@@ -1,0 +1,48 @@
+About · outbid.lol
+outbid
+.
+lol
+Leaderboard
+About
+Rules
+2,007 online
+·
+1,062,442 visitors since launch
+·
+see stats→
+About
+outbid.lol started as
+a simple side project
+: no ads, no API keys, no revenue sharing. Just outbid your competitors to rank #1 — and consider marketing done for the day.
+Then it went live
+The site launched on August 19th, 2026, at 11:08 PM.
+A few crazy things that happened since then:
+0
+visitors
+—
+revenue
+$
+10,000
+highest bid (so far) · trycomp.ai
+Enough traffic to break the analytics provider
+(see previous stats →)
+. Had to switch to
+datafa.st
+last night to keep the counter running. Someone offered $100k to buy it. At least 10 copycats emerged in the first day.
+The board is still here. Same rules. Same idea. Rank is the bid — nothing else.
+Jonathan Wilke
+—
+@jonathan_wilke
+Indie hacker from Germany, founder of
+outbid.lol
+(this site) and
+supastarter
+Built by
+@jonathan_wilke
+·
+Brought to you by
+supastarter.dev
+·
+Rules
+·
+Live stats

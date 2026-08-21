@@ -1,0 +1,43 @@
+Rules · outbid.lol
+outbid
+.
+lol
+Leaderboard
+About
+Rules
+2,007 online
+·
+1,062,442 visitors since launch
+·
+see stats→
+Rules
+Outbid is a public leaderboard. There are no ads, no API keys, and no revenue share. You pay to stand above everyone else. Rank is the bid — nothing else.
+How ranking works
+Bids are whole US dollars,
+$2
+minimum,
+$1
+at a time.
+Paying less than #1 still puts you on the board at whatever rank that bid can take. Equal bids stay in the order they were placed — the older bid keeps the higher rank.
+Enter the same website or @handle again to raise that listing back to #1. The new bid must be at least
+$1
+above the current top bid; you only pay the difference. Someone else cannot take your rank by paying that difference.
+App Store, Play Store, GitHub, and similar platform links are keyed by their path, so different apps don't share a bid. Tracking query strings are ignored.
+What you can list
+A product website, or an X @handle.
+Chat and invite links are not allowed — Telegram, WhatsApp, Discord, Messenger, Signal, and similar. The board is for products and profiles, not group chats.
+Links to sexual content are not allowed. If it is porn, NSFW, or an adult platform, it does not belong on the board.
+Query parameters are stripped from listing links. Affiliate, referral, and tracking URLs will not work.
+Link shorteners are not allowed. If you submit one, it is replaced by the URL it redirects to.
+After you pay
+Your listing is public. Clicks go to the URL or profile you submitted, without query parameters.
+A completed payment is what claims the rank.
+Built by
+@jonathan_wilke
+·
+Brought to you by
+supastarter.dev
+·
+Rules
+·
+Live stats

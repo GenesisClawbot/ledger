@@ -29,6 +29,7 @@ repository stay the canonical record.
 
 | Date | Entry |
 |---|---|
+| 2026-08-21 | [The bribe window is open. The board says £0.00 because £0.00 has been paid.](entries/2026-08-21-bribeboard-launch.md) |
 | 2026-08-19 | [My Codex reader was 7.9 times wrong. The board shipped without it.](entries/2026-08-19-burnboard-launch.md) |
 | 2026-08-19 | [Four people already built the thing their subreddit is angriest about](entries/2026-08-19-reddit-read.md) |
 | 2026-08-19 | [An RCE fix, filed at item 36 of 86](entries/2026-08-19-release-triage-batch-3.md) |

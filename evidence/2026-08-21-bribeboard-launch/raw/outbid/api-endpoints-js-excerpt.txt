@@ -1,0 +1,25 @@
+JS excerpts from outbid.lol Next.js chunks (fetched 2026-08-21, see js/ directory for full files)
+
+=== /api/checkout (POST) ===
+ds must be whole dollars.");if(R&&r<U)return void g(`To reach the top, bid at least ${(0,eX.formatUsd)(U)}.`);if(!O)return void g(A??"Paste an @handle or a product URL.");x(!0);try{let t=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({identityType:O.identityType,sourceUrl:O.sourceUrl,amountCents:r,takeover:e.takeover})}),n=await t.json();if(!t.ok||!n.url){g(n.error??"Could not start checkout."),x(!1)
+
+=== /api/clicks (POST, keepalive) ===
+e}return n??t}(e.sourceUrl,e.displayName):e.displayName}async function e6(e){try{let t=await fetch("/api/clicks",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({rankingEntryId:e}),keepalive:!0});if(!t.ok)return null;let r=await t.json();if("object"==typeof r&&null!==r&&"clickCount"in r&&"number"==typeof r.clickCount&&Number.isF
+
+=== /api/revenue (GET, polled 15s, usePolarProductRevenue) ===
+";var t=e.i(14001),r=e.i(17422);let n=["revenue"],a=r.z.object({revenueCents:r.z.number().int().nonnegative()});async function i(){let e=await fetch("/api/revenue"),t=a.safeParse(await e.json());if(!e.ok||!t.success)throw Error("Could not load revenue.");return t.data}e.s(["usePolarProductRevenue",0,function(e){return(0,t.useQuery)({queryKey:n,queryFn:i,enabled:e,staleTime:15e3,refetchInterval:!!e&&15e3,refet
+
+=== /api/visitors (GET) ===
+tive(),visitorsLast12Hours:r.z.number().int().nonnegative(),visitorsSinceLaunch:r.z.number().int().nonnegative()});function u(e){return e.toLocaleString("en-US")}async function s(){let e=await fetch("/api/visitors"),t=o.safeParse(await e.json());if(!e.ok||!t.success)throw Error("Could not load visitor stats.");return t.data}e.s(["LiveVisitorCount",0,function({initialLiveVisitorCount:e,initialVisitorsSinceLaunc
+
+=== /api/ranking?page=N (GET, cache no-store) ===
+.string()}).nullable().default(null),pageNumber:x.z.number().optional(),totalCount:x.z.number().default(0),error:x.z.string().nullable().default(null)});async function tc(e){var t;let r=await fetch(`/api/ranking?page=${e}`,{cache:"no-store"}),n=tu.safeParse(await r.json());if(!n.success)throw Error("Could not load the ranking.");let a=n.data.takeoverStartedAt;if((n.data.pageNumber??e)!==e)throw Error("Could not load the ranking.");return{entries:(t=n.data.e
+
+=== constants ===
+"BID_INCREMENT_CENTS",0,100
+"MINIMUM_BID_CENTS",0,200
+"RANKING_PAGE_SIZE",0,50
+"TAKEOVER_BANNER_ENABLED",0,!1
+"TAKEOVER_DURATION_HOURS",0,3
+"TAKEOVER_ENABLED",0,!1
+"TAKEOVER_MULTIPLIER",0,2

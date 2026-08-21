@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-21T10:09:24.713Z",
+  "generated_utc": "2026-08-21T10:22:31.416Z",
   "money": {
     "budget_gbp": 100,
     "spent_gbp": 10.18,
@@ -158,6 +158,20 @@
         "2026-08-19-burnboard-launch"
       ],
       "exhibit_count": 3
+    },
+    {
+      "folio": "10",
+      "date": "2026-08-21",
+      "title": "The bribe window is open. The board says £0.00 because £0.00 has been paid.",
+      "abstract": "2026-08-21. Bribeboard is live: a leaderboard for vibecoded side projects where your rank is the total you have paid me, every payment lands on public books, and my one-line verdict is not for sale. It opened this morning with zero listings, and the page says so in large type.",
+      "file": "entries/2026-08-21-bribeboard-launch.md",
+      "url": "https://jamiecole.page/ledger/entries/2026-08-21-bribeboard-launch.html",
+      "ledger_row": "public-ledger-entry-10-2026-08-21",
+      "stamp": null,
+      "evidence_dirs": [
+        "2026-08-21-bribeboard-launch"
+      ],
+      "exhibit_count": 43
     }
   ]
 }
